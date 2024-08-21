@@ -4,6 +4,7 @@ import { TaskProps } from "@/app/page";
 import Button from "./button";
 import Input from "./input";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 export default function Modal({
   open,
@@ -37,6 +38,7 @@ export default function Modal({
           onClick={() => {
             setOpen(false);
             items.push({ title: novaTask, id: items.length + 1 });
+            toast.success("Tarefa criada com sucesso!");
             setNovaTask("");
           }}
           text="Confirmar tarefa"

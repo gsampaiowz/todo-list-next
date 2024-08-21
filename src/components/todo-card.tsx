@@ -5,6 +5,7 @@ import { SetStateAction, useState } from "react";
 import { BiCheck, BiCheckCircle, BiPencil } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
 import Input from "./input";
+import { toast } from "react-hot-toast";
 
 export default function ToDoCard({
   task,
@@ -45,7 +46,11 @@ export default function ToDoCard({
       <div className="flex items-center [&>*]:cursor-pointer [&>*]:mx-1 [&>*]:transition-all">
         <CgClose
           size={24}
-          onClick={() => setItems(items.filter((item) => item.id !== task.id))}
+          onClick={() => {
+            setItems(items.filter((item) => item.id !== task.id));
+
+            toast.success("Tarefa deletada com sucesso");
+          }}
         />
 
         <BiCheckCircle
@@ -57,10 +62,11 @@ export default function ToDoCard({
               item.id === task.id ? { ...item, title: editedTask } : item
             );
             setItems(updatedItems);
+            toast.success("Tarefa editada com sucesso");
           }}
         />
         <BiPencil
-          className={!edit || done ? "" : "size-0 !mx-0"}
+          className={!edit && !done ? "" : "size-0 !mx-0"}
           onClick={() => {
             setEdit(true);
           }}
