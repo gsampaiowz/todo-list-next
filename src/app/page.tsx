@@ -43,7 +43,7 @@ export default function Home() {
 
         <div className={`flex flex-col w-[500px] gap-4`}>
           {items.length === 0 ? <p>Nenhuma tarefa encontrada</p> : items.filter((item) => item.title.toLowerCase().includes(textoBusca.toLowerCase())).map((item: TaskProps) => (
-            <ToDoCard setItems={setItems} items={items} task={item} />
+            <ToDoCard key={item.id} setItems={setItems} items={items} task={item} />
           ))}
         </div>
       </div>
