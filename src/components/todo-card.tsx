@@ -20,8 +20,8 @@ export default function ToDoCard({
   const [editedTask, setEditedTask] = useState(task.title);
 
   return (
-    <div className="flex justify-between w-full h-8 gap-4">
-      <div className="flex gap-2 w-full">
+    <div className="flex justify-between w-full min-h-8 gap-4">
+      <div className="flex gap-2 w-full items-center">
         {edit ? (
           <Input
             className="border-b-[1px] border-white/50 "

@@ -33,5 +33,6 @@ body {
 }
 
 .scrollbar-none{
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: #6d28d9 #2e1065;
 }
