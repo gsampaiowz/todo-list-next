@@ -41,7 +41,7 @@ export default function Home() {
           icon={<FaMagnifyingGlass />}
         />
 
-        <div className={`flex flex-col w-[500px] gap-4`}>
+        <div className={`flex flex-col w-[500px] gap-4 max-h-96 scrollbar-none`}>
           {items.length === 0 ? <p>Nenhuma tarefa encontrada</p> : items.filter((item) => item.title.toLowerCase().includes(textoBusca.toLowerCase())).map((item: TaskProps) => (
             <ToDoCard key={item.id} setItems={setItems} items={items} task={item} />
           ))}
