@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col gap-4 bg-violet-700 items-center justify-center p-24">
-      <div style={{ height: items.length == 0 ? "auto" : `calc(145px + ${items.length * 48}px)` }} className={`bg-violet-950 rounded-lg p-8 flex flex-col gap-6 transition-all`}>
+      <div style={{ height: items.length == 0 || items.length > 4 ? "auto" : `calc(145px + ${items.length * 48}px)` }} className={`bg-violet-950 rounded-lg p-8 flex flex-col gap-6 transition-all`}>
         <h1>{dataAtualFormatada}</h1>
 
         <Input
@@ -41,7 +41,7 @@ export default function Home() {
           icon={<FaMagnifyingGlass />}
         />
 
-        <div className={`flex flex-col w-[500px] gap-4 max-h-96 scrollbar-none`}>
+        <div className={`flex flex-col w-[500px] gap-4scrollbar-none`}>
           {items.length === 0 ? <p>Nenhuma tarefa encontrada</p> : items.filter((item) => item.title.toLowerCase().includes(textoBusca.toLowerCase())).map((item: TaskProps) => (
             <ToDoCard key={item.id} setItems={setItems} items={items} task={item} />
           ))}
