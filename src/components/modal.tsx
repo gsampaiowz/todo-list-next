@@ -36,6 +36,7 @@ export default function Modal({
         />
         <Button
           onClick={() => {
+            if(novaTask == "") return toast.error("Preencha o campo de tarefa!");
             setOpen(false);
             items.push({ title: novaTask, id: items.length + 1 });
             toast.success("Tarefa criada com sucesso!");

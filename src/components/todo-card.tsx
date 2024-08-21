@@ -2,8 +2,7 @@
 
 import { TaskProps } from "@/app/page";
 import { SetStateAction, useState } from "react";
-import { BiCheck, BiCheckCircle, BiPencil } from "react-icons/bi";
-import { CgClose } from "react-icons/cg";
+import { BiCheck, BiCheckCircle, BiPencil, BiTrash } from "react-icons/bi";
 import Input from "./input";
 import { toast } from "react-hot-toast";
 
@@ -44,7 +43,7 @@ export default function ToDoCard({
       </div>
 
       <div className="flex items-center [&>*]:cursor-pointer [&>*]:mx-1 [&>*]:transition-all">
-        <CgClose
+        <BiTrash
           size={24}
           onClick={() => {
             setItems(items.filter((item) => item.id !== task.id));

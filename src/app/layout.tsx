@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Toaster position="top-right"/>
+        <Toaster toastOptions={{ duration: 1000  }} position="top-center"/>
         {children}
       </body>
     </html>
