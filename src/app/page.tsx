@@ -6,7 +6,7 @@ import ToDoCard from "@/components/todo-card";
 import { useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-export type CardProps = { title: string; done: boolean; edit: boolean };
+export type TaskProps = { title: string; id: number; };
 
 export default function Home() {
   const dataAtualExtenso = new Date().toLocaleString("pt-BR", {
@@ -22,7 +22,7 @@ export default function Home() {
     )
     .join(" ");
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<TaskProps[]>([]);
 
   const [textoBusca, setTextoBusca] = useState("");
   
@@ -34,16 +34,16 @@ export default function Home() {
         <h1>{dataAtualFormatada}</h1>
 
         <Input
-        className="placeholder:text-end"
+        className="placeholder:text-end border-b-[1px] border-white"
           value={textoBusca}
           setValue={setTextoBusca}
           placeholder="Procurar tarefa"
           icon={<FaMagnifyingGlass />}
         />
 
-        <div className="flex flex-col gap-4">
-          {items.map((item: CardProps) => (
-            <ToDoCard setItems={setItems} items={items} title={item.title} />
+        <div className="flex flex-col w-[500px] gap-4">
+          {items.filter((item) => item.title.toLowerCase().includes(textoBusca.toLowerCase())).map((item: TaskProps) => (
+            <ToDoCard setItems={setItems} items={items} task={item} />
           ))}
         </div>
       </div>
